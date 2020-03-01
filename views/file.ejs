@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Uploading with Multer</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <style>
+        .page {
+            margin-top: 30px;
+        }
+
+        .box {
+            padding-top: 15px;
+            padding-bottom: 15px;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container page">
+        <h3 class="text-center">
+            <%= title %>
+        </h3>
+        <div class="row">
+            <div class="col-md-4 offset-md-2 box">
+                <h5 class="text-center">File Upload</h5>
+                <% if (fileuploadStatus) { %>
+                    <div class="alert alert-success" role="alert">
+                        File Upload successfully
+                    </div>
+                    <% } %>
+                        <form action="/fileupload" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <input type="file" name="myfile" class="form-control" />
+                            </div>
+                            <div class="form-group">
+                                <input type="submit" name="submit" class="btn btn-success btn-block">
+                            </div>
+                        </form>
+            </div>
+            <div class="col-md-4 box">
+                <h5 class="text-center">Upload and Convert Doc to HTML</h5>
+                <% if (docuploadStatus && errorMsg === undefined) { %>
+                    <div class="alert alert-success" role="alert">
+                        Doc Upload successfully
+                    </div>
+                    <% } %>
+                        <% if (!docuploadStatus && errorMsg !== undefined) { %>
+                            <div class="alert alert-danger" role="alert">
+                                <%= errorMsg %>
+                            </div>
+                            <% } %>
+                                <form action="/convert" method="POST" enctype="multipart/form-data">
+                                    <div class="form-group">
+                                        <input type="file" name="myfile" class="form-control" />
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="submit" name="submit" class="btn btn-success btn-block">
+                                    </div>
+                                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col">
+                <%= htmlVal %>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
