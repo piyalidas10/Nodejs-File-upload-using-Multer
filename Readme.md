@@ -1,3 +1,12 @@
+# Run Application
+``` 
+nodemon app.js
+``` 
+![first image](ss1.png)
+![try to upload image file](ss2.png)
+![get error](ss3.png)
+![upload doc file](ss4.png)
+
 ### File Upload Using Multer in Node.js and Express
 https://www.npmjs.com/package/multer
 https://www.youtube.com/watch?v=9JAkmAuHC8s
